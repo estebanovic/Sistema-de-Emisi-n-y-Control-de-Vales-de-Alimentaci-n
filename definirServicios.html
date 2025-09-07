@@ -1,0 +1,100 @@
+<html lang= "es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CU3 Definir Servicios | Administración</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/definirServicios.css">
+</head>
+<body>
+    <!--encabezado-->
+    <header>
+<h1>Administración • Definir Servicios</h1>
+</header>
+    <!--barra de navegación-->
+<nav>
+    <ul class="nav-buttons">
+     <li><a href="index.html" class="nav-btn">Inicio</a></li>
+     <li> <a href="clientes.html" class="nav-btn">Clientes</a> </li>
+     <li> <a href="productos.html" class="nav-btn">Productos</a> </li>
+     <li> <a href="facturacion.html" class="nav-btn">Facturación</a> </li>
+    <li> <a href="definirServicios.html" class="nav-btn active ">Definir Servicios</a> </li>
+    </ul>
+</nav>
+<main>
+    <!--formulario para crear/editar un servicio-->
+    <section>
+        <h2>Servicio</h2>
+        <form>
+            <!--campo oculto ára el ID-->
+            <input type="hidden" id="id" />
+            <!--nombre del servicio-->
+            <label for="nombre">Nombre del Servicio:</label>
+            <input id="nombre" name="nombre" placeholder="EJ: Desayuno" required />
+            <!--hora de inicio y fin del servicio-->
+            <label for="inicio">inicio:</label>
+            <input id="inicio" name="inicio" type="time" required />
+            
+            <label for="fin">fin:</label>
+            <input id="fin" name="fin" type="time" required />
+            <!--precio base del servicio-->
+            <label for="precio">Precio Base:</label>
+            <input id="precio" name="precio" type="number" min="0" step="100"  required />
+            <!--sede donde se ofrece el servicio-->
+            <label for="tipo"</label>
+                <select id="sede" name="sede" required>
+                    <option value=" ambas">Ambas</option><option value="central">Central</option>
+                    <option value="Sucursal">Sucursal</option>
+                </select>
+                <!--máximo de vales que se pueden emitir por turno-->
+                <label for="maxVales">Vales Por turno:</label>
+                <input id="maxVales" name="maxVales" type="number" min="1" step="1" required />
+                <!--estado del servicio-->
+                <lavel for="Activo">Estado:</lavel>
+                <input id="activo" name="activo">
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+                </select>
+                <!--descripción adicional-->
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+                <!--botones de acción-->
+                <button type="submit" id="btn-guardar">Guardar Servicio</button>
+                <button type="reset" id="btn-limpiar">Limpiar</button>
+                <button type="button" id="btn-eliminar">Eliminar Servicio</button>
+                </form>
+                </section>
+                <!--lista de servicios definidos-->
+                <section>
+                    <h2>Servicios Registrados</h2>
+                <!--buscador-->
+                <input placeholder="buscar por nombre o sede" />
+                <button>exportar</button>
+
+                <!--tabla de servicios-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>horario</th>
+                            <th>Precio</th>
+                            <th>Tipo</th>
+                            <th>Sede</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <!--Fila de ejemplo cuando no hay datos-->
+                    <tr>
+                        <td colspan="7">No hay servicios registrados</td>
+                    </tr>
+                </tbody>
+                </table>
+                </section>
+
+        </form>
+        </body>
+</main>
+</html>
+

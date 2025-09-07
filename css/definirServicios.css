@@ -1,0 +1,148 @@
+/* ==== Estilos Generales ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ==== Header ==== */
+header {
+    background: linear-gradient(135deg, #7d83b8 0%, #22244e 55%);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==== Formularios ==== */
+section form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #e74c3c;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+/* ==== Botones ==== */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+button[type="reset"] {
+    background-color: #3498db;
+    color: white;
+}
+
+button[type="reset"]:hover {
+    background-color: #2980b9;
+}
+
+button[type="button"] {
+    background-color: #e67e22;
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #d35400;
+}
+
+/* ==== Tabla ==== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ==== Responsividad ==== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 18px;
+    }
+
+    button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}

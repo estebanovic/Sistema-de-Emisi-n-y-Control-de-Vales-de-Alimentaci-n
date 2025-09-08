@@ -1,5 +1,5 @@
 /* ==== Estilos Generales ==== */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,10 +11,10 @@ body {
     color: #333;
     line-height: 1.6;
     padding: 20px;
-}
+} */
 
 /* ==== Header ==== */
-header {
+/* header {
     background: linear-gradient(135deg, #7d83b8 0%, #22244e 55%);
     color: white;
     padding: 15px 20px;
@@ -27,9 +27,14 @@ header h1 {
     font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
+} */
 
 /* ==== Formularios ==== */
+
+section {
+    padding: 20px;
+}
+
 section form {
     background-color: white;
     padding: 20px;

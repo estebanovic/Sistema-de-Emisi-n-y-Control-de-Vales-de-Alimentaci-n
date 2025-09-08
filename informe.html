@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferreteria El Martillo</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<script defer src="js/informe.js"></script>
+
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <div class="logo-img">
+        <img src="./image/logo.png" alt="" width="220px">
+      </div>
+    </div>
+    <div class="header-title">
+      Sistema de Gestión Tickets de Alimentación
+    </div>
+  </header>
+  <!-- Barra de Navegación -->
+  <nav>
+    <ul class="nav-buttons">
+      <li><a href="index.html" class="nav-btn">Inicio</a></li>
+      <li><a href="imprimevale.html" class="nav-btn">Imprimir Vales</a></li>
+      <li><a href="definirservicios.html" class="nav-btn">Definir Servicios</a></li>
+      <li><a href="tipousuario.html" class="nav-btn">Definir Vales y usuarios</a></li>
+      <li><a href="informe.html" class="nav-btn">Generar Informe</a></li>
+      <li><a href="venta.html" class="nav-btn active">Registrar Venta</a></li>
+    </ul>
+  </nav>
+  <!-- Pagina Principal -->
+  <main class="main-container">
+    <section>
+      <h2>Generar Informe de Auditoría de Vales</h2>
+      <form id="form-tickets">
+        <div>
+          <label for="turno">Turno</label>
+          <select name="turno" id="turno">
+            <option value="" disabled selected>Seleccione un turno</option>
+            <option value="todos">Todos los turnos</option>
+            <option value="mañana">Mañana (08:00 - 16:00)</option>
+            <option value="tarde">Tarde (16:00 - 24:00)</option>
+            <option value="noche">Noche (24:00 - 08:00)</option>
+          </select>
+        </div>
+        <div>
+          <label for="semana">Semana</label> <!-- Input para seleccionar la semana con datapicker custom-->
+          <input type="date" id="semana" name="semana" required>
+          <!-- Acá se va a mostrar la semana seleccionada, se calcula con js -->
+          <div id="semanaSeleccionada"></div>
+    </section>
+  </main>
+  <!-- Pie de página -->
+  <footer>
+    <p>Desarrollado por <span class="developer">Esteban Obilinovic</span></p>
+    <p>copyright &copy; 2025 version 1.0 Derechos Reservados</p>
+    <p>FERRETERIA EL MARTILLO - PROVIDENCIA</p>
+  </footer>
+</body>
+
+</html>

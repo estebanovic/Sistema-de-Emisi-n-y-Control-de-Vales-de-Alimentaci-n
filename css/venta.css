@@ -1,0 +1,58 @@
+/* Estilos para la sección principal */
+section {
+    flex: 3;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+
+/* Contenedor de registros */
+.registros-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+/* Estilos para validación */
+.error {
+    border: 2px solid #e74c3c !important;
+}
+
+.error-mensaje {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+.btn-accion {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.85em;
+}
+
+.btn-accion.editar {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-accion.eliminar {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-accion:hover {
+    opacity: 0.9;
+}

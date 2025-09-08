@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketMeal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/venta.css">
+    <link rel="icon" href="./image/logo.png" type="image/png">
+    <!-- Enlaza al archivo JavaScript -->
+    <script defer src="js/venta.js"></script>
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+   <div class="logo">
+    <div class="logo-img">
+      <img src="./image/logo.png" alt="" width="220px">
+    </div>
+   </div>
+   <div class="header-title">
+    Sistema de Gestión Tickets de Alimentación
+   </div>
+  </header>  
+    
+    <!-- Navegación -->
+    <!-- Estos se deben actualizar para que coincidan con el idex final -->
+    <nav>
+        <ul class="nav-buttons">
+            <li><a href="index.html" class="nav-btn">Inicio</a></li>
+            <li><a href="imprimevale.html" class="nav-btn">Imprimir Vales</a></li>
+            <li><a href="definirservicios.html" class="nav-btn">Definir Servicios</a></li>
+            <li><a href="tipousuario.html" class="nav-btn">Definir Vales y usuarios</a></li>
+            <li><a href="informe.html" class="nav-btn">Generar Informe</a></li>
+            <li><a href="venta.html" class="nav-btn active">Registrar Venta</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Contenido Principal -->
+    <main class="main-container">
+        <section>
+            <h2>Registro de ticket</h2>
+            <form id="form-tickets">
+                <!-- Fecha y hora -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha">
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora</label>
+                        <input type="time" id="hora">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="user">ID Usuario</label>
+                    <input type="number" id="id" placeholder="Ej: 0334" required>
+                </div>
+
+                <!-- tipo de meal -->
+                <div class="form-group">
+                    <label for="tipo-ticket">Tipo de Ticket</label>
+                    <select id="tipo-ticket" required>
+                        <option value="">Seleccione un tipo</option>
+                        <option value="Desayuno">Desayuno</option>
+                        <option value="Almuerzo">Almuerzo</option>
+                        <option value="Cena 1">Cena 1</option>
+                        <option value="Cena 2">Cena 2</option>
+                    </select>
+                </div>
+
+                <!-- item comprado -->
+                <div class="form-group">
+                    <label for="item">Ítem Comprado</label>
+                    <input type="text" id="item" placeholder="Ej: Menú del día" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="number" id="valor" placeholder="Ej: 5000" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Registrar Ticket </button>
+            </form>
+            
+            <!-- Tabla de clientes registrados -->
+            <div class="registros-container">
+                <h3>Tickets Registrados</h3>
+                <table class="tabla-registros">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Id Usuario</th>
+                            <th>Tipo de Ticket</th>
+                            <th>Item Comprado</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los registros se cargarán dinámicamente con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Desarrollado por <span class="developer">Leonardo Tapia</span></p>
+        <p>Copyright &copy; 2025 - Todos los derechos reservados</p>
+        <p>TicketMeal</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="js/venta.js"></script>
+</body>
+</html>

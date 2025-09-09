@@ -10,20 +10,20 @@
 </head>
 <body>
     <!--encabezado-->
-<header>
-   <div class="logo">
-    <div class="logo-img">
-      <img src="./image/logo.png" alt="" width="220px">
-    </div>
-   </div>
-   <div class="header-title">
-    Sistema de Gestión Tickets de Alimentación
-   </div>
-  </header>  
-  <!-- Barra de Navegación -->
-  <nav>
+    <header>
+        <div class="logo">
+            <div class="logo-img">
+                <img src="./image/logo.png" alt="Logo" width="220px">
+            </div>
+        </div>
+        <div class="header-title">
+            Sistema de Gestión Tickets de Alimentación
+        </div>
+    </header>  
+
+    <!-- Barra de Navegación -->
+    <nav>
         <ul class="nav-buttons">
-            <li><a href="index.html" class="nav-btn">Inicio</a></li>
             <li><a href="imprimevale.html" class="nav-btn">Imprimir Vales</a></li>
             <li><a href="definirservicios.html" class="nav-btn active">Definir Servicios</a></li>
             <li><a href="tipousuario.html" class="nav-btn">Definir Vales y Usuarios</a></li>
@@ -31,86 +31,85 @@
             <li><a href="venta.html" class="nav-btn">Registrar Venta</a></li>
         </ul>
     </nav>
-<main>
-    <!--formulario para crear/editar un servicio-->
-    <section>
-        <h2>Servicio</h2>
-        <form id="form-servicio">
-            <!--campo oculto para el ID-->
-            <input type="hidden" id="id" />
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="nombre">Nombre del Servicio:</label>
-                    <input id="nombre" name="nombre" placeholder="Ej: Desayuno" required />
-                </div>
-                <div class="form-group">
-                    <label for="precio">Precio Base:</label>
-                    <input id="precio" name="precio" type="number" min="0" step="100" required />
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="inicio">Hora de Inicio:</label>
-                    <input id="inicio" name="inicio" type="time" required />
+    <!-- Contenido principal -->
+    <main class="main-container">
+        <section>
+            <h2>Servicio</h2>
+            <form id="form-servicio">
+                <!--campo oculto para el ID-->
+                <input type="hidden" id="id" />
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Servicio:</label>
+                        <input id="nombre" name="nombre" placeholder="Ej: Desayuno" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio Base:</label>
+                        <input id="precio" name="precio" type="number" min="0" step="100" required />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="fin">Hora de Fin:</label>
-                    <input id="fin" name="fin" type="time" required />
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="sede">Sede:</label>
-                    <select id="sede" name="sede" required>
-                        <option value="">Seleccione</option>
-                        <option value="ambas">Ambas</option>
-                        <option value="central">Central</option>
-                        <option value="sucursal">Sucursal</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inicio">Hora de Inicio:</label>
+                        <input id="inicio" name="inicio" type="time" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="fin">Hora de Fin:</label>
+                        <input id="fin" name="fin" type="time" required />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="maxVales">Vales Por Turno:</label>
-                    <input id="maxVales" name="maxVales" type="number" min="1" step="1" required />
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="activo">Estado:</label>
-                    <select id="activo" name="activo" required>
-                        <option value="">Seleccione</option>
-                        <option value="true">Activo</option>
-                        <option value="false">Inactivo</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sede">Sede:</label>
+                        <select id="sede" name="sede" required>
+                            <option value="">Seleccione</option>
+                            <option value="ambas">Ambas</option>
+                            <option value="central">Central</option>
+                            <option value="sucursal">Sucursal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxVales">Vales Por Turno:</label>
+                        <input id="maxVales" name="maxVales" type="number" min="1" step="1" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Descripción adicional del servicio..."></textarea>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="activo">Estado:</label>
+                        <select id="activo" name="activo" required>
+                            <option value="">Seleccione</option>
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="btn-group">
-                <button type="submit" id="btn-guardar" class="btn-submit">Guardar Servicio</button>
-                <button type="reset" id="btn-limpiar" class="btn-limpiar">Limpiar</button>
-                <button type="button" id="btn-eliminar" class="btn-eliminar">Eliminar Servicio</button>
-            </div>
-        </form>
-                </section>
-    <!--lista de servicios definidos-->
-    <section>
-        <h2>Servicios Registrados</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Descripción adicional del servicio..."></textarea>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" id="btn-guardar" class="btn-submit">Guardar Servicio</button>
+                    <button type="reset" id="btn-limpiar" class="btn-limpiar">Limpiar</button>
+                    <button type="button" id="btn-eliminar" class="btn-eliminar">Eliminar Servicio</button>
+                </div>
+            </form>
         
-        <!--buscador-->
-        <div class="search-container">
-            <input id="buscador" placeholder="Buscar por nombre o sede..." />
-            <button id="btn-exportar" class="btn-exportar">Exportar</button>
-        </div>
+            <h2>Servicios Registrados</h2>
+            
+            <!--buscador-->
+            <div class="search-container">
+                <input id="buscador" placeholder="Buscar por nombre o sede..." />
+                <button id="btn-exportar" class="btn-exportar">Exportar</button>
+            </div>
 
         <!--tabla de servicios-->
         <table class="tabla-registros">
@@ -137,4 +136,5 @@
     <p>TicketMeal</p>
   </footer>
 </html>
+
 

@@ -72,6 +72,26 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Vista previa del vale */
+.vista-previa {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.vista-previa h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.vale-content {
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
 /* Diseño del ticket de vale */
 .vale-ticket {

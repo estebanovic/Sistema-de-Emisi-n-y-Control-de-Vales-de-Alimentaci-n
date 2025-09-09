@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const tablaBody = document.getElementById("tabla-vales");
     const horaActual = document.getElementById("horaActual");
     const servicioAsignado = document.getElementById("servicioAsignado");
+    const vistaPrevia = document.getElementById("vista-previa");
+    const valeContent = document.getElementById("vale-content");
     const btnImprimir = document.getElementById("btn-imprimir");
     const btnNuevo = document.getElementById("btn-nuevo");
     const servicioSelect = document.getElementById("servicio");
@@ -133,6 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
         valesGenerados.push(valeActual);
         localStorage.setItem("valesGenerados", JSON.stringify(valesGenerados));
 
+        // Mostrar vista previa
+        mostrarVistaPrevia();
+        
         // Actualizar tabla
         cargarValesHoy();
         
@@ -149,12 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return `V${timestamp}${random}`;
     }
 
-
-    function imprimirVale() {
-        if (!valeActual) {
-            alert("No hay vale para imprimir.");
-            return;
-        }
+    function mostrarVistaPrevia() {
+        if (!valeActual) return;
 
         const servicioNombres = {
             desayuno: "Desayuno",
@@ -172,8 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
             visita: "Visita"
         };
 
-        // Crear contenido del vale para impresión
-        const valeContent = `
+        valeContent.innerHTML = `
             <div class="vale-ticket">
                 <div class="vale-header">
                     <h2>VALE DE ALIMENTACIÓN</h2>
@@ -193,11 +193,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
                 <div class="vale-footer">
-                    <p>Ferretería El Martillo - Sistema de Vales</p>
+                    <p>Ticketmeal - Sistema de Vales</p>
                     <p>Vale válido solo para el servicio indicado</p>
                 </div>
             </div>
         `;
+
+        vistaPrevia.style.display = "block";
+    }
+
+
+    function imprimirVale() {
+        if (!valeActual) {
+            alert("No hay vale para imprimir.");
+            return;
+        }
 
         // Crear ventana de impresión
         const ventanaImpresion = window.open('', '_blank');
@@ -220,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </style>
             </head>
             <body>
-                ${valeContent}
+                ${valeContent.innerHTML}
             </body>
             </html>
         `);
@@ -231,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function nuevoVale() {
         form.reset();
+        vistaPrevia.style.display = "none";
         btnImprimir.disabled = true;
         valeActual = null;
         configurarAsignacionAutomatica();
@@ -288,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (vale) {
             valeActual = vale;
+            mostrarVistaPrevia();
             imprimirVale();
         }
     }

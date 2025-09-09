@@ -1,10 +1,12 @@
-<html lang= "es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CU3 Definir Servicios | Administración</title>
+    <title>CU2 - Definir Servicios</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/definirServicios.css">
+    <script defer src="js/definirServicios.js"></script>
 </head>
 <body>
     <!--encabezado-->
@@ -22,91 +24,116 @@
   <nav>
         <ul class="nav-buttons">
             <li><a href="imprimevale.html" class="nav-btn">Imprimir Vales</a></li>
-            <li><a href="definirservicios.html" class="nav-btn">Definir Servicios</a></li>
-            <li><a href="tipousuario.html" class="nav-btn">Definir Vales y usuarios</a></li>
+            <li><a href="definirservicios.html" class="nav-btn active">Definir Servicios</a></li>
+            <li><a href="tipousuario.html" class="nav-btn">Definir Vales y Usuarios</a></li>
             <li><a href="informe.html" class="nav-btn">Generar Informe</a></li>
-            <li><a href="venta.html" class="nav-btn active">Registrar Venta</a></li>
+            <li><a href="venta.html" class="nav-btn">Registrar Venta</a></li>
         </ul>
     </nav>
 <main>
     <!--formulario para crear/editar un servicio-->
     <section>
         <h2>Servicio</h2>
-        <form>
-            <!--campo oculto ára el ID-->
+        <form id="form-servicio">
+            <!--campo oculto para el ID-->
             <input type="hidden" id="id" />
-            <!--nombre del servicio-->
-            <label for="nombre">Nombre del Servicio:</label>
-            <input id="nombre" name="nombre" placeholder="EJ: Desayuno" required />
-            <!--hora de inicio y fin del servicio-->
-            <label for="inicio">inicio:</label>
-            <input id="inicio" name="inicio" type="time" required />
             
-            <label for="fin">fin:</label>
-            <input id="fin" name="fin" type="time" required />
-            <!--precio base del servicio-->
-            <label for="precio">Precio Base:</label>
-            <input id="precio" name="precio" type="number" min="0" step="100"  required />
-            <!--sede donde se ofrece el servicio-->
-            <label for="tipo"</label>
-                <select id="sede" name="sede" required>
-                    <option value=" ambas">Ambas</option><option value="central">Central</option>
-                    <option value="Sucursal">Sucursal</option>
-                </select>
-                <!--máximo de vales que se pueden emitir por turno-->
-                <label for="maxVales">Vales Por turno:</label>
-                <input id="maxVales" name="maxVales" type="number" min="1" step="1" required />
-                <!--estado del servicio-->
-                <lavel for="Activo">Estado:</lavel>
-                <input id="activo" name="activo">
-                <option value="true">Activo</option>
-                <option value="false">Inactivo</option>
-                </select>
-                <!--descripción adicional-->
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="3"></textarea>
-                <!--botones de acción-->
-                <button type="submit" id="btn-guardar">Guardar Servicio</button>
-                <button type="reset" id="btn-limpiar">Limpiar</button>
-                <button type="button" id="btn-eliminar">Eliminar Servicio</button>
-                </form>
-                </section>
-                <!--lista de servicios definidos-->
-                <section>
-                    <h2>Servicios Registrados</h2>
-                <!--buscador-->
-                <input placeholder="buscar por nombre o sede" />
-                <button>exportar</button>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre del Servicio:</label>
+                    <input id="nombre" name="nombre" placeholder="Ej: Desayuno" required />
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio Base:</label>
+                    <input id="precio" name="precio" type="number" min="0" step="100" required />
+                </div>
+            </div>
 
-                <!--tabla de servicios-->
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Servicio</th>
-                            <th>horario</th>
-                            <th>Precio</th>
-                            <th>Tipo</th>
-                            <th>Sede</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                <tbody>
-                    <!--Fila de ejemplo cuando no hay datos-->
-                    <tr>
-                        <td colspan="7">No hay servicios registrados</td>
-                    </tr>
-                </tbody>
-                </table>
-                </section>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="inicio">Hora de Inicio:</label>
+                    <input id="inicio" name="inicio" type="time" required />
+                </div>
+                <div class="form-group">
+                    <label for="fin">Hora de Fin:</label>
+                    <input id="fin" name="fin" type="time" required />
+                </div>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="sede">Sede:</label>
+                    <select id="sede" name="sede" required>
+                        <option value="">Seleccione</option>
+                        <option value="ambas">Ambas</option>
+                        <option value="central">Central</option>
+                        <option value="sucursal">Sucursal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="maxVales">Vales Por Turno:</label>
+                    <input id="maxVales" name="maxVales" type="number" min="1" step="1" required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="activo">Estado:</label>
+                    <select id="activo" name="activo" required>
+                        <option value="">Seleccione</option>
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Descripción adicional del servicio..."></textarea>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" id="btn-guardar" class="btn-submit">Guardar Servicio</button>
+                <button type="reset" id="btn-limpiar" class="btn-limpiar">Limpiar</button>
+                <button type="button" id="btn-eliminar" class="btn-eliminar">Eliminar Servicio</button>
+            </div>
         </form>
-        </body>
+                </section>
+    <!--lista de servicios definidos-->
+    <section>
+        <h2>Servicios Registrados</h2>
+        
+        <!--buscador-->
+        <div class="search-container">
+            <input id="buscador" placeholder="Buscar por nombre o sede..." />
+            <button id="btn-exportar" class="btn-exportar">Exportar</button>
+        </div>
+
+        <!--tabla de servicios-->
+        <table class="tabla-registros">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Horario</th>
+                    <th>Precio</th>
+                    <th>Sede</th>
+                    <th>Vales/Turno</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-servicios">
+                <!--Se cargan con JS-->
+            </tbody>
+        </table>
+    </section>
 </main>
   <footer>
     <p>Desarrollado por <span class="developer">Rainer Marquez</span></p>
     <p>copyright &copy; 2025 version 1.0 Derechos Reservados</p>
-    <p>FERRETERIA EL MARTILLO - PROVIDENCIA</p>
+    <p>TicketMeal</p>
   </footer>
 </html>
 

@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tablaBody = document.getElementById("tabla-vales");
     const horaActual = document.getElementById("horaActual");
     const servicioAsignado = document.getElementById("servicioAsignado");
-    const vistaPrevia = document.getElementById("vista-previa");
-    const valeContent = document.getElementById("vale-content");
     const btnImprimir = document.getElementById("btn-imprimir");
     const btnNuevo = document.getElementById("btn-nuevo");
     const servicioSelect = document.getElementById("servicio");
@@ -26,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     btnImprimir.addEventListener("click", () => {
-        imprimevale();
+        imprimirVale();
     });
 
     btnNuevo.addEventListener("click", () => {
@@ -84,12 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function generarVale() {
         const tipoUsuario = document.getElementById("tipoUsuario").value;
-        const nombreComensal = document.getElementById("nombreComensal").value;
         const servicio = document.getElementById("servicio").value;
         const cantidadVales = parseInt(document.getElementById("cantidadVales").value);
         const observaciones = document.getElementById("observaciones").value;
 
-        if (!tipoUsuario || !nombreComensal || !servicio || cantidadVales <= 0) {
+        if (!tipoUsuario || !servicio || cantidadVales <= 0) {
             alert("Por favor complete todos los campos correctamente.");
             return;
         }
@@ -114,12 +111,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const valorUnitario = parseInt(configVale.valor);
         const valorTotal = valorUnitario * cantidadVales;
 
+        // Generar ID único del vale
+        const idVale = generarIdVale();
+
         valeActual = {
             id: Date.now(),
+            idVale: idVale,
             fecha: new Date().toISOString().split('T')[0],
             hora: new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
             tipoUsuario,
-            nombreComensal,
             servicio,
             cantidadVales,
             valorUnitario,
@@ -133,9 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
         valesGenerados.push(valeActual);
         localStorage.setItem("valesGenerados", JSON.stringify(valesGenerados));
 
-        // Mostrar vista previa
-        mostrarVistaPrevia();
-        
         // Actualizar tabla
         cargarValesHoy();
         
@@ -145,8 +142,19 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Vale generado correctamente.");
     }
 
-    function mostrarVistaPrevia() {
-        if (!valeActual) return;
+    function generarIdVale() {
+        // Generar ID único basado en timestamp y número aleatorio
+        const timestamp = Date.now().toString().slice(-6);
+        const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        return `V${timestamp}${random}`;
+    }
+
+
+    function imprimirVale() {
+        if (!valeActual) {
+            alert("No hay vale para imprimir.");
+            return;
+        }
 
         const servicioNombres = {
             desayuno: "Desayuno",
@@ -164,17 +172,18 @@ document.addEventListener("DOMContentLoaded", () => {
             visita: "Visita"
         };
 
-        valeContent.innerHTML = `
+        // Crear contenido del vale para impresión
+        const valeContent = `
             <div class="vale-ticket">
                 <div class="vale-header">
                     <h2>VALE DE ALIMENTACIÓN</h2>
                     <p class="numero-vale">N° ${valeActual.numeroVale}</p>
+                    <p class="id-vale">ID: ${valeActual.idVale}</p>
                 </div>
                 <div class="vale-body">
                     <div class="vale-info">
                         <p><strong>Fecha:</strong> ${new Date().toLocaleDateString('es-ES')}</p>
                         <p><strong>Hora:</strong> ${valeActual.hora}</p>
-                        <p><strong>Comensal:</strong> ${valeActual.nombreComensal}</p>
                         <p><strong>Tipo:</strong> ${tipoNombres[valeActual.tipoUsuario]}</p>
                         <p><strong>Servicio:</strong> ${servicioNombres[valeActual.servicio]}</p>
                         <p><strong>Cantidad:</strong> ${valeActual.cantidadVales} vale(s)</p>
@@ -190,15 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        vistaPrevia.style.display = "block";
-    }
-
-    function imprimevale() {
-        if (!valeActual) {
-            alert("No hay vale para imprimir.");
-            return;
-        }
-
         // Crear ventana de impresión
         const ventanaImpresion = window.open('', '_blank');
         ventanaImpresion.document.write(`
@@ -212,6 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     .vale-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 15px; }
                     .vale-header h2 { margin: 0; color: #e74c3c; }
                     .numero-vale { font-size: 18px; font-weight: bold; margin: 5px 0; }
+                    .id-vale { font-size: 14px; font-weight: bold; margin: 5px 0; color: #666; }
                     .vale-body { margin-bottom: 15px; }
                     .vale-info p { margin: 8px 0; }
                     .vale-footer { text-align: center; border-top: 1px solid #000; padding-top: 10px; font-size: 12px; color: #666; }
@@ -219,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </style>
             </head>
             <body>
-                ${valeContent.innerHTML}
+                ${valeContent}
             </body>
             </html>
         `);
@@ -230,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function nuevoVale() {
         form.reset();
-        vistaPrevia.style.display = "none";
         btnImprimir.disabled = true;
         valeActual = null;
         configurarAsignacionAutomatica();
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const fila = document.createElement("tr");
             fila.innerHTML = `
                 <td>${vale.hora}</td>
-                <td>${vale.nombreComensal}</td>
+                <td>${vale.idVale}</td>
                 <td>${vale.tipoUsuario}</td>
                 <td>${vale.servicio}</td>
                 <td>${vale.cantidadVales}</td>
@@ -278,18 +278,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Eventos para reimprimir
         document.querySelectorAll(".reimprimir").forEach(btn => {
-            btn.addEventListener("click", () => reimprimevale(btn.dataset.id));
+            btn.addEventListener("click", () => reimprimirVale(btn.dataset.id));
         });
     }
 
-    function reimprimevale(id) {
+    function reimprimirVale(id) {
         const vales = obtenerValesGenerados();
         const vale = vales.find(v => v.id == id);
         
         if (vale) {
             valeActual = vale;
-            mostrarVistaPrevia();
-            imprimevale();
+            imprimirVale();
         }
     }
 });

@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const horaInput = document.getElementById('hora');
     const ahora = new Date();
 
-    // Formateamos la fecha a YYYY-MM-DD.
+    // Formateamos la fecha y hora YYYY-MM-DD HH:MM para que sea compatible con el input type="date".
     const fechaFormateada = ahora.toISOString().slice(0, 10);
-    // Formateamos la hora a HH:MM.
     const horaFormateada = ahora.toTimeString().slice(0, 5);
     
     // Asignamos la fecha y hora a los campos del formulario.
@@ -21,15 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Esta función se ejecuta cuando haces clic en el botón "Registrar Ticket".
     form.addEventListener('submit', (event) => {
+        console.log('Formulario enviado'); // Para depuración en la consola.
         // Evita que la página se recargue.
         event.preventDefault();
 
         // Obtenemos los valores de todos los campos del formulario.
         const fecha = fechaInput.value;
         const hora = horaInput.value;
-        const idUsuario = document.getElementById('id').value; // Usamos el id 'id'
+        const idUsuario = document.getElementById('id').value; //  'id'
         const tipoTicket = document.getElementById('tipo-ticket').value;
-        const itemComprado = document.getElementById('item').value; // Usamos el id 'item'
+        const itemComprado = document.getElementById('item').value; // 'item'
         const valor = document.getElementById('valor').value;
         
         // Creamos una nueva fila (<tr>) al final de la tabla.
@@ -41,11 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
         nuevaFila.insertCell().textContent = idUsuario;
         nuevaFila.insertCell().textContent = tipoTicket;
         nuevaFila.insertCell().textContent = itemComprado;
-        // Agregamos el signo '$' al valor para que se vea mejor.
-        nuevaFila.insertCell().textContent = `$${valor}`;
+        nuevaFila.insertCell().textContent = valor;
         
         // Limpiamos todos los campos del formulario para el siguiente registro.
         form.reset();
+        // Asignamos la fecha y hora a los campos del formulario.
+        fechaInput.value = fechaFormateada;
+        horaInput.value = horaFormateada;
+
 
         // Devolvemos el cursor al campo "ID Usuario" para agilizar el próximo ingreso.
         document.getElementById('id').focus();

@@ -78,7 +78,12 @@ section {
 }
 
 #form-tickets button:hover,
-#form-tickets input[type="submit"]:hover {
+#form-tickets #btnEnviar:hover {
+    background-color: #c0392b;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+#form-tickets #btnEnviar:disabled:hover {
     background-color: #8b8b8b;
     box-shadow: 0 4px 8px rgba(0,0,0,0.12);
 }

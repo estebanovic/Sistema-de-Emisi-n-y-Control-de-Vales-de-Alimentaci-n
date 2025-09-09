@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
                 <div class="vale-footer">
-                    <p>Ferretería El Martillo - Sistema de Vales</p>
+                    <p>Ticketmeal - Sistema de Vales</p>
                     <p>Vale válido solo para el servicio indicado</p>
                 </div>
             </div>

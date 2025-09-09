@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CU3 - Imprimir Vales</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/imprimevale.css">
+  <script defer src="js/imprimevale.js"></script>
+</head>
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <div class="logo-img">
+        <img src="./image/logo.png" alt="Logo" width="220px">
+      </div>
+    </div>
+    <div class="header-title">Sistema de Gestión Tickets de Alimentación</div>
+  </header>
+
+  <!-- Navegación -->
+  <nav>
+    <ul class="nav-buttons">
+      <li><a href="index.html" class="nav-btn">Inicio</a></li>
+      <li><a href="imprimevale.html" class="nav-btn active">Imprimir Vales</a></li>
+      <li><a href="definirservicios.html" class="nav-btn">Definir Servicios</a></li>
+      <li><a href="tipousuario.html" class="nav-btn">Definir Vales y Usuarios</a></li>
+      <li><a href="informe.html" class="nav-btn">Generar Informe</a></li>
+      <li><a href="venta.html" class="nav-btn">Registrar Venta</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="main-container">
+    <section>
+      <h2>Generar Vale de Alimentación</h2>
+      
+      <!-- Información de la hora actual -->
+      <div class="hora-info">
+        <h3>Información del Turno</h3>
+        <p><strong>Hora actual:</strong> <span id="horaActual"></span></p>
+        <p><strong>Servicio asignado:</strong> <span id="servicioAsignado"></span></p>
+      </div>
+
+      <form id="form-generar-vale">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tipoUsuario">Tipo de Usuario</label>
+            <select id="tipoUsuario" required>
+              <option value="">Seleccione</option>
+              <option value="obrero">Obrero</option>
+              <option value="administrativo">Administrativo</option>
+              <option value="jefe">Jefe</option>
+              <option value="gerente">Gerente</option>
+              <option value="visita">Visita</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nombreComensal">Nombre del Comensal</label>
+            <input type="text" id="nombreComensal" required placeholder="Ej: Juan Pérez">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servicio">Servicio de Alimentación</label>
+            <select id="servicio" required>
+              <option value="">Seleccione</option>
+              <option value="desayuno">Desayuno</option>
+              <option value="almuerzo">Almuerzo</option>
+              <option value="once">Once</option>
+              <option value="cena1">Cena 1</option>
+              <option value="cena2">Cena 2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cantidadVales">Cantidad de Vales</label>
+            <input type="number" id="cantidadVales" min="1" max="5" value="1" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="observaciones">Observaciones (Opcional)</label>
+            <textarea id="observaciones" rows="3" placeholder="Notas adicionales..."></textarea>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn-submit">Generar Vale</button>
+          <button type="button" id="btn-imprimir" class="btn-imprimir" disabled>Imprimir Vale</button>
+          <button type="button" id="btn-nuevo" class="btn-nuevo">Nuevo Vale</button>
+        </div>
+      </form>
+
+      <!-- Vista previa del vale -->
+      <div id="vista-previa" class="vista-previa" style="display: none;">
+        <h3>Vista Previa del Vale</h3>
+        <div id="vale-content" class="vale-content">
+          <!-- Se genera dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Historial de vales generados -->
+      <div class="registros-container">
+        <h3>Vales Generados Hoy</h3>
+        <table class="tabla-registros">
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Comensal</th>
+              <th>Tipo Usuario</th>
+              <th>Servicio</th>
+              <th>Cantidad</th>
+              <th>Valor Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-vales">
+            <!-- Se cargan con JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Desarrollado por <span class="developer">Rainer Marquez</span></p>
+    <p>Copyright &copy; 2025 - Todos los derechos reservados</p>
+    <p>Ferretería El Martillo - Sistema de Vales</p>
+  </footer>
+</body>
+</html>

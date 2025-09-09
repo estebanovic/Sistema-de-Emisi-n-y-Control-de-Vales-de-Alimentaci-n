@@ -1,0 +1,213 @@
+/* ==== Estilos específicos para impresión de vales ==== */
+
+/* Información de hora actual */
+.hora-info {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.hora-info h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.hora-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Grupo de botones */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+/* Botón de imprimir */
+.btn-imprimir {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-imprimir:hover:not(:disabled) {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-imprimir:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Botón de nuevo vale */
+.btn-nuevo {
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-nuevo:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Vista previa del vale */
+.vista-previa {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.vista-previa h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.vale-content {
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Diseño del ticket de vale */
+.vale-ticket {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  border: 2px solid #e74c3c;
+  border-radius: 8px;
+}
+
+.vale-header {
+  text-align: center;
+  border-bottom: 2px solid #e74c3c;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.vale-header h2 {
+  color: #e74c3c;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.numero-vale {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+.vale-body {
+  margin-bottom: 20px;
+}
+
+.vale-info p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.vale-info strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.vale-footer {
+  text-align: center;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+.vale-footer p {
+  margin: 5px 0;
+}
+
+/* Botón de reimprimir en tabla */
+.btn-accion.reimprimir {
+  background-color: #ffc107;
+  color: #212529;
+  margin-right: 5px;
+}
+
+.btn-accion.reimprimir:hover {
+  background-color: #e0a800;
+}
+
+/* ==== Responsividad ==== */
+@media (max-width: 768px) {
+  .btn-submit,
+  .btn-accion,
+  .btn-imprimir,
+  .btn-nuevo {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .vale-ticket {
+    margin: 0 10px;
+    padding: 15px;
+  }
+
+  .vale-header h2 {
+    font-size: 20px;
+  }
+
+  .vale-info p {
+    font-size: 14px;
+  }
+}
+
+/* ==== Estilos para impresión ==== */
+@media print {
+  .vale-ticket {
+    border: 2px solid #000;
+    margin: 0;
+    padding: 20px;
+    max-width: none;
+    width: 100%;
+  }
+  
+  .vale-header h2 {
+    color: #000;
+  }
+  
+  .vale-info strong {
+    color: #000;
+  }
+  
+  .vale-footer {
+    color: #000;
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CU4 - Definir Vales</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/definirVales.css">
+  <script defer src="js/definirVales.js"></script>
+</head>
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <div class="logo-img">
+        <img src="./image/logo.png" alt="Logo" width="220px">
+      </div>
+    </div>
+    <div class="header-title">Sistema de Gestión Tickets de Alimentación</div>
+  </header>
+
+  <!-- Navegación -->
+  <nav>
+    <ul class="nav-buttons">
+      <li><a href="index.html" class="nav-btn">Inicio</a></li>
+      <li><a href="imprimevale.html" class="nav-btn">Imprimir Vales</a></li>
+      <li><a href="definirservicios.html" class="nav-btn">Definir Servicios</a></li>
+      <li><a href="definirVales.html" class="nav-btn active">Definir Vales y Usuarios</a></li>
+      <li><a href="informe.html" class="nav-btn">Generar Informe</a></li>
+      <li><a href="venta.html" class="nav-btn">Registrar Venta</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="main-container">
+    <section>
+      <h2>Definir Vales por Tipo de Usuario</h2>
+      <form id="form-vales">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tipoUsuario">Tipo de Usuario</label>
+            <select id="tipoUsuario" required>
+              <option value="">Seleccione</option>
+              <option value="obrero">Obrero</option>
+              <option value="administrativo">Administrativo</option>
+              <option value="jefe">Jefe</option>
+              <option value="gerente">Gerente</option>
+              <option value="visita">Visita</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="servicio">Servicio de Alimentación</label>
+            <select id="servicio" required>
+              <option value="">Seleccione</option>
+              <option value="desayuno">Desayuno</option>
+              <option value="almuerzo">Almuerzo</option>
+              <option value="once">Once</option>
+              <option value="cena1">Cena 1</option>
+              <option value="cena2">Cena 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="valor">Valor del Vale</label>
+            <input type="number" id="valor" min="0" step="100" required placeholder="Ej: 2500">
+          </div>
+          <div class="form-group">
+            <label for="maxVales">Cantidad de Vales por Turno</label>
+            <input type="number" id="maxVales" min="1" step="1" required placeholder="Ej: 1 o más">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Guardar Vale</button>
+      </form>
+
+      <!-- Tabla de Vales Definidos -->
+      <div class="registros-container">
+        <h3>Vales Definidos</h3>
+        <table class="tabla-registros">
+          <thead>
+            <tr>
+              <th>Tipo Usuario</th>
+              <th>Servicio</th>
+              <th>Valor</th>
+              <th>Vales por Turno</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Se cargan con JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Desarrollado por <span class="developer">[Tu Nombre]</span></p>
+    <p>Copyright &copy; 2025 - Todos los derechos reservados</p>
+    <p>Ferretería El Martillo - Sistema de Vales</p>
+  </footer>
+</body>
+</html>
